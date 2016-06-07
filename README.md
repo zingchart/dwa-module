@@ -2,6 +2,8 @@
 
 This module calculates the distributed weighted average of your plots.
 
+![dwa example](/assets/dwa-example-graph.png)
+
 ### Usage
 1. Include the module in your page after the zingchart library
 2. Include the module reference in the zingchart.render({}) method.
