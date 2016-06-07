@@ -12,6 +12,7 @@ zingchart.defineModule('dwa', 'plugin', function(json){
     var numSeries = json.series.length; // The number of series in the chart.
     var numValues = []; // Will hold the number of values in each series.
     var weights = []; // Will hold the weights for each series.
+    var oConfig = {};
 
     /*
      * Get the number of values in each series to make sure there are the same #.
@@ -34,8 +35,8 @@ zingchart.defineModule('dwa', 'plugin', function(json){
     }
 
     /* Parse the options. */
-    var seriesName = json.dwa.name ? json.dwa.name : "Weighted Average";
-    var visibleAtFirst = !json.dwa.visibleAtFirst ? json.dwa.visibleAtFirst : true;
+    var seriesName = (json.dwa && json.dwa.name) ? json.dwa.name : "Weighted Average";
+    var visibleAtFirst = (json.dwa && !json.dwa.visibleAtFirst) ? json.dwa.visibleAtFirst : true;
 
     /* Calculate the average between all series.  */
     var dwaValues = [];
@@ -48,13 +49,23 @@ zingchart.defineModule('dwa', 'plugin', function(json){
         dwaValues.push(sumAtIndex);
     }
 
-    /* Push the new DWA series. */
-    json.series.push({
-        values: dwaValues,
-        text: seriesName,
-        visible: visibleAtFirst
-    });
+    // Apply the config options 
+    if (json.dwa) {
 
-    /* Return the modified JSON, which has the new DWA series. */
+        // Assign lineColor and background color to blanket all chart types
+        if (json.dwa.color) {
+            oConfig.lineColor = json.dwa.color;
+            oConfig.marker = {};
+            oConfig.marker.backgroundColor = json.dwa.color;
+            oConfig.backgroundColor = json.dwa.color;
+         }
+
+        oConfig.text = seriesName;
+        oConfig.values = dwaValues;
+        oConfig.visible = visibleAtFirst;
+        json.series.push(oConfig);
+    }
+
+    // Return the modified JSON, which has the new DWA series.
     return json;
 });
