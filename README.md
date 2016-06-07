@@ -24,6 +24,12 @@ There are a couple attributes you can define in your chart configuration for the
 	* visibleAtFirst (boolean) - If true this attribute will show the dwa plot when the graph loads. This is the default.
 	* name (string) - If defined, this name will appear in the legend. The default text is "Weighted Average".
     * color (string) - If defined this will set the color of your dwa plot. Otherwise it will default to the standard library color for that plot.
+<pre><code>dwa:{
+            // 'dwa' module is loaded in the render method below.
+            visibleAtFirst:true, // Default is true
+            name: "Distributed Weighted Average", // Optional Name
+            color: '#000' // Optional Color
+        },</code></pre>
 2. weight (Number) - If defined, it must be defined within each individual series object. The default weight is 1, in which case the weighted average is an even distribution amongst plots.
 <pre><code>series : [
         {
