@@ -34,7 +34,7 @@ There are a couple attributes you can define in your chart configuration for the
 <pre><code>series : [
         {
             values: [35,42,67,89,25,34,67,85],
-            weight: 0.3 // optional weight
+            weight: 0.4 // optional weight
         },
         {
             values: [74,71,89,34,26,73,21,56],
