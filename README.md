@@ -32,10 +32,6 @@ There are a couple attributes you can define in your chart configuration for the
         {
             values: [74,71,89,34,26,73,21,56],
             weight: 0.6 // optional weight
-        },
-        {
-            values: [74,71,89,34,26,73,21,56],
-            weight: 0.1 // optional weight
         }
    ]
 </code></pre>
